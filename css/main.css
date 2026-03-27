@@ -31,6 +31,16 @@
   --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
 }
 
+[data-theme="dark"] {
+  --bg: #0D1117;
+  --bg-card: #161B22;
+  --text-primary: #E6EDF3;
+  --text-secondary: #8B949E;
+  --text-muted: #6E7681;
+  --border: #30363D;
+  --gradient-india: linear-gradient(135deg, #FFB366 0%, #FF9933 50%, #1AAF0D 100%);
+}
+
 /* ===== RESET ===== */
 *, *::before, *::after {
   margin: 0;

@@ -1,0 +1,190 @@
+/* ===== GESTURE CONTROL UI ===== */
+
+.gesture-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  font-family: var(--font-main);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.gesture-toggle-btn:hover {
+  border-color: var(--saffron);
+  box-shadow: var(--shadow-sm);
+}
+
+.gesture-toggle-btn.active {
+  background: rgba(255, 153, 51, 0.1);
+  color: var(--saffron);
+  border-color: var(--saffron);
+}
+
+.gesture-panel {
+  position: fixed;
+  top: 72px;
+  right: -350px; /* Hidden by default */
+  width: 320px;
+  max-width: 100%;
+  height: calc(100vh - 72px);
+  background: var(--bg-card);
+  border-left: 1px solid var(--border);
+  box-shadow: -4px 0 15px rgba(0,0,0,0.05);
+  z-index: 950;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.gesture-panel.open {
+  right: 0;
+}
+
+.gesture-panel-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gesture-panel-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.close-gesture-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.close-gesture-btn:hover {
+  color: var(--text-primary);
+}
+
+.gesture-panel-body {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.gesture-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+#gestureVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+#gestureCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1);
+}
+
+.gesture-instructions {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.gesture-instructions h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.gesture-instructions ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gesture-instructions li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gesture-instructions li strong {
+  color: var(--saffron);
+  font-weight: 600;
+  background: rgba(255, 153, 51, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Floating Indicator */
+.gesture-indicator {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  z-index: 1000;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideDown 0.3s ease;
+  pointer-events: none;
+}
+
+.gesture-indicator::before {
+  content: "✋";
+  font-size: 1.2rem;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (max-width: 768px) {
+  .gesture-panel {
+    top: 64px;
+    height: calc(100vh - 64px);
+    width: 100%;
+    right: -100%;
+  }
+}

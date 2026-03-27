@@ -3,6 +3,17 @@
    Navigation, UI, Notifications, Init
    =================================================== */
 
+// ===== THEME TOGGLE =====
+function changeTheme(themeValue) {
+  const root = document.documentElement;
+  if (themeValue === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else {
+    root.removeAttribute('data-theme');
+  }
+  localStorage.setItem('sanskriti_theme', themeValue);
+}
+
 // ===== NAVIGATION =====
 function navigateTo(pageName) {
   // Hide all pages
@@ -115,6 +126,12 @@ function updateGreeting() {
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
+  // Load theme
+  const savedTheme = localStorage.getItem('sanskriti_theme') || 'light';
+  changeTheme(savedTheme);
+  const settingsTheme = document.getElementById('settingsTheme');
+  if (settingsTheme) settingsTheme.value = savedTheme;
+
   // Init assistant
   SanskritiAssistant.init();
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sanskriti — Indian Voice-First Assistant Dashboard</title>
-  <meta name="description" content="Sanskriti: A professional, offline-first, Indian-themed voice assistant dashboard supporting English, Hindi, and Marathi." />
+  <title>Sanskriti 2.0 — Indian Voice & Gesture Assistant</title>
+  <meta name="description" content="Sanskriti 2.0: A professional, offline-first, Indian-themed voice and gesture assistant dashboard." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/exercise.css" />
   <link rel="stylesheet" href="css/blind.css" />
   <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/gesture.css" />
 </head>
 <body>
   <!-- ======== NAVBAR ======== -->
@@ -32,7 +33,7 @@
           </defs>
         </svg>
       </div>
-      <span class="brand-name">Sanskriti</span>
+      <span class="brand-name">Sanskriti 2.0</span>
     </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#" class="nav-link active" data-page="home" id="nav-home">
@@ -55,6 +56,9 @@
       </a></li>
     </ul>
     <div class="nav-controls">
+      <button class="gesture-toggle-btn" id="gestureToggleBtn" onclick="toggleGestureControl()" aria-label="Toggle Gesture Control">
+        <span class="nav-icon">✋</span> <span class="btn-text">Gestures Off</span>
+      </button>
       <div class="lang-selector" id="langSelector">
         <button class="lang-btn" id="langBtn">
           <span id="currentLangFlag">🇮🇳</span>
@@ -290,6 +294,16 @@
         </div>
         <div class="settings-app">
           <div class="settings-group">
+            <h3>Appearance</h3>
+            <div class="setting-item">
+              <label>Theme</label>
+              <select id="settingsTheme" onchange="changeTheme(this.value)">
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Mode</option>
+              </select>
+            </div>
+          </div>
+          <div class="settings-group">
             <h3>Language</h3>
             <div class="setting-item">
               <label>Voice Language</label>
@@ -316,15 +330,42 @@
           <div class="settings-group">
             <h3>About</h3>
             <div class="setting-item about-info">
-              <p><strong>Sanskriti</strong> — Voice-First Assistant Dashboard</p>
-              <p>Version 1.0 | Offline-First | Made in India 🇮🇳</p>
-              <p>Supports English, Hindi & Marathi</p>
+              <p><strong>Sanskriti 2.0</strong> — Voice & Gesture Assistant Dashboard</p>
+              <p>Version 2.0 | Offline-First | Made in India 🇮🇳</p>
+              <p>Supports English, Hindi, Marathi & Hand Gestures</p>
             </div>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- ======== GESTURE CONTROL PANEL & INDICATOR ======== -->
+  <div class="gesture-panel" id="gesturePanel">
+    <div class="gesture-panel-header">
+      <h3>✋ Gesture Control</h3>
+      <button class="close-gesture-btn" onclick="toggleGestureControl()">✕</button>
+    </div>
+    <div class="gesture-panel-body">
+      <div class="gesture-video-wrapper">
+        <video id="gestureVideo" autoplay playsinline muted></video>
+        <canvas id="gestureCanvas"></canvas>
+      </div>
+      <div class="gesture-instructions">
+        <h4>Show fingers to open apps:</h4>
+        <ul>
+          <li><strong>1 Finger:</strong> Calculator</li>
+          <li><strong>2 Fingers:</strong> Exercise Guide</li>
+          <li><strong>3 Fingers:</strong> Notes</li>
+          <li><strong>4 Fingers:</strong> Blind Navigation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="gesture-indicator" id="gestureIndicator" style="display:none;">
+    <span id="gestureDetectedNumber">-</span>
+  </div>
 
   <!-- ======== VOICE ASSISTANT FLOATING BUTTON ======== -->
   <div class="voice-assistant" id="voiceAssistant">
@@ -365,6 +406,7 @@
   <script src="js/notes.js"></script>
   <script src="js/exercise.js"></script>
   <script src="js/blind.js"></script>
+  <script src="js/gesture.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
