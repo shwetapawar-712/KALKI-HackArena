@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanskriti — Indian Voice-First Assistant Dashboard</title>
+  <meta name="description" content="Sanskriti: A professional, offline-first, Indian-themed voice assistant dashboard supporting English, Hindi, and Marathi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/assistant.css" />
+  <link rel="stylesheet" href="css/apps.css" />
+  <link rel="stylesheet" href="css/exercise.css" />
+  <link rel="stylesheet" href="css/blind.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+</head>
+<body>
+  <!-- ======== NAVBAR ======== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="url(#brandGrad)" stroke-width="2.5" fill="none"/>
+          <path d="M20 6 C20 6 28 14 28 22 C28 28 24 34 20 34 C16 34 12 28 12 22 C12 14 20 6 20 6Z" fill="url(#brandGrad)" opacity="0.85"/>
+          <defs>
+            <linearGradient id="brandGrad" x1="0" y1="0" x2="40" y2="40">
+              <stop offset="0%" stop-color="#FF9933"/>
+              <stop offset="100%" stop-color="#138808"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <span class="brand-name">Sanskriti</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="nav-link active" data-page="home" id="nav-home">
+        <span class="nav-icon">🏠</span> Home
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="calculator" id="nav-calculator">
+        <span class="nav-icon">🧮</span> Calculator
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="notes" id="nav-notes">
+        <span class="nav-icon">📝</span> Notes
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="exercise" id="nav-exercise">
+        <span class="nav-icon">🏋️</span> Exercise
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="blind" id="nav-blind">
+        <span class="nav-icon">👁️</span> Blind Guide
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="settings" id="nav-settings">
+        <span class="nav-icon">⚙️</span> Settings
+      </a></li>
+    </ul>
+    <div class="nav-controls">
+      <div class="lang-selector" id="langSelector">
+        <button class="lang-btn" id="langBtn">
+          <span id="currentLangFlag">🇮🇳</span>
+          <span id="currentLangLabel">EN</span>
+          <svg class="chevron" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-option active" data-lang="en-US" data-label="EN">
+            <span>🇬🇧</span> English
+          </button>
+          <button class="lang-option" data-lang="hi-IN" data-label="HI">
+            <span>🇮🇳</span> हिन्दी
+          </button>
+          <button class="lang-option" data-lang="mr-IN" data-label="MR">
+            <span>🇮🇳</span> मराठी
+          </button>
+        </div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======== NOTIFICATION CONTAINER ======== -->
+  <div class="notification-container" id="notificationContainer"></div>
+
+  <!-- ======== MAIN CONTENT ======== -->
+  <main class="main-content" id="mainContent">
+
+    <!-- HOME PAGE -->
+    <section class="page active" id="page-home">
+      <div class="home-hero">
+        <div class="hero-greeting" id="heroGreeting">
+          <h1 id="greetingText">Good Morning</h1>
+          <p class="hero-subtitle" id="greetingSubtitle">How can I help you today?</p>
+        </div>
+        <div class="hero-cards">
+          <div class="feature-card" data-page="calculator" onclick="navigateTo('calculator')">
+            <div class="card-icon">🧮</div>
+            <h3>Calculator</h3>
+            <p>Quick arithmetic</p>
+          </div>
+          <div class="feature-card" data-page="notes" onclick="navigateTo('notes')">
+            <div class="card-icon">📝</div>
+            <h3>Notes</h3>
+            <p>Capture thoughts</p>
+          </div>
+          <div class="feature-card" data-page="exercise" onclick="navigateTo('exercise')">
+            <div class="card-icon">🏋️</div>
+            <h3>Exercise Guide</h3>
+            <p>AI pose tracking</p>
+          </div>
+          <div class="feature-card" data-page="blind" onclick="navigateTo('blind')">
+            <div class="card-icon">👁️</div>
+            <h3>Blind Navigation</h3>
+            <p>Object detection</p>
+          </div>
+        </div>
+        <div class="voice-hints">
+          <h3>Try saying:</h3>
+          <div class="hints-grid">
+            <div class="hint-chip">"Open Calculator"</div>
+            <div class="hint-chip">"Start Exercise Guide"</div>
+            <div class="hint-chip">"What time is it?"</div>
+            <div class="hint-chip">"Open Notes"</div>
+            <div class="hint-chip">"Guide me in squats"</div>
+            <div class="hint-chip">"Switch to Hindi"</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATOR PAGE -->
+    <section class="page" id="page-calculator">
+      <div class="app-container">
+        <div class="app-header">
+          <h2>Calculator</h2>
+          <button class="back-btn" onclick="navigateTo('home')">← Back</button>
+        </div>
+        <div class="calculator" id="calculator">
+          <div class="calc-display" id="calcDisplay">
+            <div class="calc-expression" id="calcExpression"></div>
+            <div class="calc-result" id="calcResult">0</div>
+          </div>
+          <div class="calc-grid">
+            <button class="calc-btn func" onclick="calcClear()">AC</button>
+            <button class="calc-btn func" onclick="calcToggleSign()">±</button>
+            <button class="calc-btn func" onclick="calcPercent()">%</button>
+            <button class="calc-btn op" onclick="calcOp('/')">÷</button>
+            <button class="calc-btn" onclick="calcDigit('7')">7</button>
+            <button class="calc-btn" onclick="calcDigit('8')">8</button>
+            <button class="calc-btn" onclick="calcDigit('9')">9</button>
+            <button class="calc-btn op" onclick="calcOp('*')">×</button>
+            <button class="calc-btn" onclick="calcDigit('4')">4</button>
+            <button class="calc-btn" onclick="calcDigit('5')">5</button>
+            <button class="calc-btn" onclick="calcDigit('6')">6</button>
+            <button class="calc-btn op" onclick="calcOp('-')">−</button>
+            <button class="calc-btn" onclick="calcDigit('1')">1</button>
+            <button class="calc-btn" onclick="calcDigit('2')">2</button>
+            <button class="calc-btn" onclick="calcDigit('3')">3</button>
+            <button class="calc-btn op" onclick="calcOp('+')">+</button>
+            <button class="calc-btn zero" onclick="calcDigit('0')">0</button>
+            <button class="calc-btn" onclick="calcDecimal()">.</button>
+            <button class="calc-btn equals" onclick="calcEquals()">=</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTES PAGE -->
+    <section class="page" id="page-notes">
+      <div class="app-container">
+        <div class="app-header">
+          <h2>Notes & To-Do</h2>
+          <button class="back-btn" onclick="navigateTo('home')">← Back</button>
+        </div>
+        <div class="notes-app" id="notesApp">
+          <div class="notes-input-area">
+            <input type="text" id="noteInput" placeholder="Type or speak a note..." class="note-input" />
+            <button class="add-note-btn" id="addNoteBtn" onclick="addNote()">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="notes-filters">
+            <button class="filter-btn active" data-filter="all" onclick="filterNotes('all')">All</button>
+            <button class="filter-btn" data-filter="active" onclick="filterNotes('active')">Active</button>
+            <button class="filter-btn" data-filter="done" onclick="filterNotes('done')">Completed</button>
+          </div>
+          <div class="notes-list" id="notesList"></div>
+          <div class="notes-empty" id="notesEmpty">
+            <span class="empty-icon">📝</span>
+            <p>No notes yet. Start typing or say "Add note: your text"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXERCISE PAGE -->
+    <section class="page" id="page-exercise">
+      <div class="app-container exercise-container">
+        <div class="app-header">
+          <h2>Exercise Guide</h2>
+          <button class="back-btn" onclick="navigateTo('home'); stopExercise();">← Back</button>
+        </div>
+        <div class="exercise-app" id="exerciseApp">
+          <div class="exercise-select" id="exerciseSelect">
+            <h3>Choose an Exercise</h3>
+            <div class="exercise-cards">
+              <div class="exercise-card" onclick="startExercise('squats')">
+                <div class="ex-icon">🏋️</div>
+                <h4>Squats</h4>
+                <p>Track your squat form</p>
+              </div>
+              <div class="exercise-card" onclick="startExercise('pushups')">
+                <div class="ex-icon">💪</div>
+                <h4>Push-ups</h4>
+                <p>Count reps automatically</p>
+              </div>
+              <div class="exercise-card" onclick="startExercise('yoga')">
+                <div class="ex-icon">🧘</div>
+                <h4>Yoga</h4>
+                <p>Pose correction</p>
+              </div>
+            </div>
+          </div>
+          <div class="exercise-active" id="exerciseActive" style="display:none;">
+            <div class="exercise-video-container">
+              <video id="exerciseVideo" autoplay playsinline muted></video>
+              <canvas id="exerciseCanvas"></canvas>
+              <div class="exercise-overlay">
+                <div class="exercise-stats">
+                  <div class="stat-item">
+                    <span class="stat-label">Reps</span>
+                    <span class="stat-value" id="repCount">0</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">Exercise</span>
+                    <span class="stat-value" id="exerciseName">—</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">Form</span>
+                    <span class="stat-value" id="formStatus">—</span>
+                  </div>
+                </div>
+                <div class="exercise-feedback" id="exerciseFeedback"></div>
+              </div>
+            </div>
+            <button class="stop-exercise-btn" onclick="stopExercise()">Stop Exercise</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLIND NAVIGATION PAGE -->
+    <section class="page" id="page-blind">
+      <div class="app-container blind-container">
+        <div class="app-header">
+          <h2>Blind Navigation Guide</h2>
+          <button class="back-btn" onclick="navigateTo('home'); stopBlindNav();">← Back</button>
+        </div>
+        <div class="blind-app" id="blindApp">
+          <div class="blind-start" id="blindStart">
+            <div class="blind-intro">
+              <div class="blind-icon">👁️</div>
+              <h3>Object Detection & Navigation</h3>
+              <p>Uses your camera to detect objects and provides voice guidance with distance estimation.</p>
+              <button class="start-blind-btn" onclick="startBlindNav()">Start Navigation</button>
+            </div>
+          </div>
+          <div class="blind-active" id="blindActive" style="display:none;">
+            <div class="blind-video-container">
+              <video id="blindVideo" autoplay playsinline muted></video>
+              <canvas id="blindCanvas"></canvas>
+              <div class="blind-overlay">
+                <div class="detected-objects" id="detectedObjects">
+                  <p class="detecting-text">Detecting objects...</p>
+                </div>
+              </div>
+            </div>
+            <button class="stop-blind-btn" onclick="stopBlindNav()">Stop Navigation</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETTINGS PAGE -->
+    <section class="page" id="page-settings">
+      <div class="app-container">
+        <div class="app-header">
+          <h2>Settings</h2>
+          <button class="back-btn" onclick="navigateTo('home')">← Back</button>
+        </div>
+        <div class="settings-app">
+          <div class="settings-group">
+            <h3>Language</h3>
+            <div class="setting-item">
+              <label>Voice Language</label>
+              <select id="settingsLang" onchange="changeLanguage(this.value)">
+                <option value="en-US">English</option>
+                <option value="hi-IN">हिन्दी (Hindi)</option>
+                <option value="mr-IN">मराठी (Marathi)</option>
+              </select>
+            </div>
+          </div>
+          <div class="settings-group">
+            <h3>Voice</h3>
+            <div class="setting-item">
+              <label>Speech Rate</label>
+              <input type="range" id="speechRate" min="0.5" max="2" step="0.1" value="1" onchange="updateSpeechRate(this.value)" />
+              <span id="speechRateVal">1.0</span>
+            </div>
+            <div class="setting-item">
+              <label>Speech Pitch</label>
+              <input type="range" id="speechPitch" min="0.5" max="2" step="0.1" value="1" onchange="updateSpeechPitch(this.value)" />
+              <span id="speechPitchVal">1.0</span>
+            </div>
+          </div>
+          <div class="settings-group">
+            <h3>About</h3>
+            <div class="setting-item about-info">
+              <p><strong>Sanskriti</strong> — Voice-First Assistant Dashboard</p>
+              <p>Version 1.0 | Offline-First | Made in India 🇮🇳</p>
+              <p>Supports English, Hindi & Marathi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======== VOICE ASSISTANT FLOATING BUTTON ======== -->
+  <div class="voice-assistant" id="voiceAssistant">
+    <button class="voice-fab" id="voiceFab" onclick="toggleVoice()">
+      <div class="voice-ripple" id="voiceRipple"></div>
+      <svg class="mic-icon" id="micIcon" viewBox="0 0 24 24" fill="none">
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z" fill="currentColor"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div class="voice-wave" id="voiceWave">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </button>
+    <div class="voice-tooltip" id="voiceTooltip">Click or say something...</div>
+  </div>
+
+  <!-- ======== ASSISTANT RESPONSE CARD ======== -->
+  <div class="assistant-card" id="assistantCard" style="display:none;">
+    <div class="assistant-card-header">
+      <span class="assistant-avatar">🙏</span>
+      <span class="assistant-name">Sanskriti</span>
+      <button class="close-card-btn" onclick="hideAssistantCard()">✕</button>
+    </div>
+    <div class="assistant-card-body" id="assistantCardBody">
+      <p id="assistantResponse"></p>
+    </div>
+    <div class="assistant-card-footer">
+      <span class="transcript-label">You said:</span>
+      <span class="transcript-text" id="transcriptText"></span>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/assistant.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/notes.js"></script>
+  <script src="js/exercise.js"></script>
+  <script src="js/blind.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

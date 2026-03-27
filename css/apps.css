@@ -1,0 +1,296 @@
+/* ===== CALCULATOR ===== */
+.calculator {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.calc-display {
+  background: linear-gradient(135deg, #1A1A2E, #16213E);
+  padding: 28px 24px;
+  text-align: right;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.calc-expression {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 8px;
+  min-height: 1.2em;
+  word-break: break-all;
+}
+
+.calc-result {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--white);
+  word-break: break-all;
+  line-height: 1.1;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+
+.calc-btn {
+  padding: 22px;
+  border: none;
+  font-family: var(--font-main);
+  font-size: 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  transition: all 0.15s ease;
+}
+
+.calc-btn:hover {
+  background: #f0f0f4;
+}
+
+.calc-btn:active {
+  background: #e4e4ea;
+  transform: scale(0.96);
+}
+
+.calc-btn.func {
+  background: #f5f5f7;
+  color: var(--text-secondary);
+}
+
+.calc-btn.func:hover {
+  background: #eaeaee;
+}
+
+.calc-btn.op {
+  background: var(--saffron);
+  color: var(--white);
+  font-size: 1.4rem;
+}
+
+.calc-btn.op:hover {
+  background: var(--saffron-dark);
+}
+
+.calc-btn.zero {
+  grid-column: span 2;
+}
+
+.calc-btn.equals {
+  background: var(--green);
+  color: var(--white);
+  font-size: 1.4rem;
+}
+
+.calc-btn.equals:hover {
+  background: var(--green-dark);
+}
+
+/* ===== NOTES ===== */
+.notes-app {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.notes-input-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.note-input {
+  flex: 1;
+  padding: 14px 18px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--bg);
+  transition: border-color var(--transition);
+}
+
+.note-input:focus {
+  outline: none;
+  border-color: var(--saffron);
+}
+
+.note-input::placeholder {
+  color: var(--text-muted);
+}
+
+.add-note-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--gradient-india);
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.add-note-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(255,153,51,0.3);
+}
+
+.add-note-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Notes Filters */
+.notes-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-btn {
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: none;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--saffron);
+  color: var(--saffron);
+}
+
+.filter-btn.active {
+  background: var(--saffron);
+  border-color: var(--saffron);
+  color: var(--white);
+}
+
+/* Notes List */
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.note-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  animation: noteIn 0.3s ease;
+}
+
+@keyframes noteIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.note-item:hover {
+  background: rgba(255,153,51,0.04);
+}
+
+.note-checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note-checkbox:hover {
+  border-color: var(--saffron);
+}
+
+.note-item.done .note-checkbox {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.note-item.done .note-checkbox::after {
+  content: '✓';
+  color: white;
+  font-size: 0.7rem;
+}
+
+.note-text {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.note-item.done .note-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.note-delete {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0;
+  transition: all var(--transition);
+}
+
+.note-item:hover .note-delete {
+  opacity: 1;
+}
+
+.note-delete:hover {
+  color: #e74c3c;
+}
+
+/* Notes Empty */
+.notes-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+}
+
+.notes-empty.hidden {
+  display: none;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}

@@ -1,0 +1,183 @@
+/* ===== EXERCISE GUIDE ===== */
+.exercise-container {
+  max-width: 900px;
+}
+
+.exercise-select h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.exercise-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.exercise-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.exercise-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient-india);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+}
+
+.exercise-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.exercise-card:hover::after {
+  transform: scaleX(1);
+}
+
+.ex-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.exercise-card h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.exercise-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Active Exercise View */
+.exercise-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.exercise-video-container {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 4/3;
+}
+
+#exerciseVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+#exerciseCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1);
+}
+
+.exercise-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.exercise-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 16px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.exercise-feedback {
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  text-align: center;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exercise-feedback p {
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  background: rgba(255,153,51,0.8);
+  border-radius: var(--radius-sm);
+  animation: feedbackPop 0.3s ease;
+}
+
+@keyframes feedbackPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.stop-exercise-btn {
+  padding: 14px 36px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: var(--white);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.stop-exercise-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(231,76,60,0.3);
+}

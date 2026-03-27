@@ -1,0 +1,136 @@
+/* ===== BLIND NAVIGATION ===== */
+.blind-container {
+  max-width: 900px;
+}
+
+.blind-intro {
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.blind-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.blind-intro h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.blind-intro p {
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+}
+
+.start-blind-btn {
+  padding: 14px 40px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--gradient-india);
+  color: var(--white);
+  font-family: var(--font-main);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.start-blind-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255,153,51,0.35);
+}
+
+/* Active Blind Nav */
+.blind-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.blind-video-container {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 4/3;
+}
+
+#blindVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#blindCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.blind-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  pointer-events: none;
+}
+
+.detected-objects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.detecting-text {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+}
+
+.object-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255,153,51,0.85);
+  border-radius: 100px;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+  animation: tagIn 0.3s ease;
+}
+
+@keyframes tagIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.stop-blind-btn {
+  padding: 14px 36px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: var(--white);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.stop-blind-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(231,76,60,0.3);
+}
